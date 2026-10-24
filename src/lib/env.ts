@@ -18,4 +18,21 @@ const schema = z.object({
   REGISTRY_ADDRESS: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
 });
 
-export const env = schema.parse(process.env); // import only from server code
+export type Env = z.infer<typeof schema>;
+
+// Lazily parse env vars on first property access so that importing this module
+// at build time (when .env.local is absent) does not throw.
+let _parsed: Env | null = null;
+
+function getParsed(): Env {
+  if (!_parsed) {
+    _parsed = schema.parse(process.env);
+  }
+  return _parsed;
+}
+
+export const env: Env = new Proxy({} as Env, {
+  get(_target, prop) {
+    return getParsed()[prop as keyof Env];
+  },
+});
