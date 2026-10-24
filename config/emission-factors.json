@@ -1,0 +1,35 @@
+{
+  "_note": "ILLUSTRATIVE factors for a hackathon demo. Every entry has verified:false, so the app labels results ILLUSTRATIVE_FACTORS. Before presenting any number as real, replace value+source with a cited figure for the correct country and year (e.g. a national grid factor from a recognised publisher, or the GHG Protocol / IPCC / DEFRA tables) and set verified:true. Do not remove the flag without a real citation.",
+  "factors": [
+    {
+      "id": "grid_electricity_generic",
+      "kind": "electricity",
+      "unit": "kWh",
+      "value": 0.45,
+      "value_unit": "kgCO2e per kWh",
+      "source": "PLACEHOLDER - replace with the cited grid emission factor for the supplier's country and year",
+      "verified": false
+    },
+    {
+      "id": "diesel_generic",
+      "kind": "diesel",
+      "unit": "L",
+      "value": 2.68,
+      "value_unit": "kgCO2e per litre",
+      "source": "PLACEHOLDER - commonly cited order of magnitude; confirm against a published fuel factor table",
+      "verified": false
+    },
+    {
+      "id": "natural_gas_generic",
+      "kind": "natural_gas",
+      "unit": "m3",
+      "value": 2.0,
+      "value_unit": "kgCO2e per cubic metre",
+      "source": "PLACEHOLDER - confirm against a published fuel factor table",
+      "verified": false
+    }
+  ],
+  "unit_conversions": [
+    { "from": "MWh", "to": "kWh", "multiply_by": 1000 }
+  ]
+}

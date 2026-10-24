@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Run tests when agent logic changes",
+  "description": "When deterministic agent code changes, run the unit tests and report failures.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/lib/agents/cross-checker.ts",
+      "src/lib/agents/climate-analyst.ts",
+      "src/lib/agents/status-policy.ts",
+      "src/lib/hash/*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A deterministic ProofChain module changed. Run `npx vitest run`. If any test fails, fix the code (not the test) unless the test contradicts .kiro/specs/proofchain-ai/design.md, in which case tell me. Confirm that no rule returns PASS when its inputs are missing (it must return UNKNOWN)."
+  }
+}

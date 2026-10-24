@@ -1,0 +1,20 @@
+{
+  "_note": "Which document types must be present for each declared claim. Used by rule REQUIRED_EVIDENCE_PRESENT. Edit freely; keep document_type values equal to the Agent 1 enum.",
+  "claims": {
+    "recycled_content": {
+      "label": "Recycled content",
+      "required_document_types": ["certificate", "composition_report", "invoice"],
+      "hint": "Certificate for the recycled-content claim, a material composition/test report, and a purchase invoice for the recycled input material."
+    },
+    "low_carbon_manufacturing": {
+      "label": "Low-carbon manufacturing",
+      "required_document_types": ["energy_report"],
+      "hint": "Facility energy records (electricity and fuel) for the production period."
+    },
+    "certificate_provided": {
+      "label": "Sustainability certificate provided",
+      "required_document_types": ["certificate"],
+      "hint": "A certificate document issued to the supplier."
+    }
+  }
+}

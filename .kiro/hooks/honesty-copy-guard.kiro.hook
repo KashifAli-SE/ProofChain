@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Honesty copy guard",
+  "description": "Keep UI text consistent with the product honesty rules.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["src/app/**/*.tsx", "src/components/**/*.tsx"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check the edited UI file against .kiro/steering/product.md. Fix any copy that: says a product or supplier is 'sustainable', 'certified' or 'proven' as a result of this system; implies the blockchain proves a claim is true; shows VERIFIED without the scope wording; or hides the DEMO DATA marker on demo batches. The passport page must contain the sentence about blockchain proving integrity and not truth. Reply only if something needs fixing."
+  }
+}

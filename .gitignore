@@ -1,0 +1,25 @@
+# ── Node / Next.js ───────────────────────────────────────────────────────────
+node_modules/
+.next/
+.vercel/
+
+# ── Environment secrets ───────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Foundry ───────────────────────────────────────────────────────────────────
+out/                  # compiled artifacts
+cache-forge/          # forge build cache
+broadcast/            # deployment receipts & run logs (keep per-chain dirs if you want history)
+# Uncomment the line below to also ignore broadcast artefacts:
+# broadcast/
+
+# ── Legacy Hardhat (kept in case any branch still has them) ───────────────────
+artifacts/
+cache/
+typechain-types/
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+*.DS_Store
+*.log

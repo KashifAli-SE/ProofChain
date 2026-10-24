@@ -1,0 +1,10 @@
+*** DEMO DATA - FICTIONAL DOCUMENT ***
+
+SUPPLIER DECLARATION
+Supplier: Sample Garments Pvt Ltd
+Product:  Cotton crew-neck T-shirt
+Batch:    TX-2001
+Production date: 2026-05-10
+
+This batch is made from 100 percent recycled cotton.
+Material used: recycled cotton fibre    3,000 kg

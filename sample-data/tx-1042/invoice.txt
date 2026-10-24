@@ -1,0 +1,9 @@
+*** DEMO DATA - FICTIONAL DOCUMENT ***
+
+PURCHASE INVOICE  INV-DEMO-7781
+Buyer:    Example Textile Ltd.
+Seller:   Demo Fibre Trading Co. (fictional)
+Date:     2026-02-20
+Batch reference: TX-1042
+
+Line 1: recycled cotton fibre    4,200 kg

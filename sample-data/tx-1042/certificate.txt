@@ -1,0 +1,13 @@
+*** DEMO DATA - FICTIONAL DOCUMENT - NOT A REAL CERTIFICATE ***
+
+EXAMPLE CERTIFICATION BODY (DEMO)
+Recycled Content Certificate
+
+Certificate ID:   DEMO-RC-0001
+Issued to:        Example Textile Ltd.
+Issue date:       2025-01-10
+Expiry date:      2025-12-31
+
+Scope: Recycled cotton fibre supplied to Example Textile Ltd.
+Declared recycled cotton content of certified material: 100 percent
+Reference batch: TX-1042

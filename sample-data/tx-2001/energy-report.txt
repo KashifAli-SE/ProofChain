@@ -1,0 +1,10 @@
+*** DEMO DATA - FICTIONAL DOCUMENT ***
+
+FACILITY ENERGY REPORT
+Facility: Sample Garments Pvt Ltd
+Period:   2026-05-01 to 2026-05-31
+Batch:    TX-2001
+
+Electricity consumed (metered):  12,000 kWh
+Diesel consumed (generator):     150 L
+Units produced in period:        8,000

@@ -1,0 +1,13 @@
+*** DEMO DATA - FICTIONAL DOCUMENT - NOT A REAL CERTIFICATE ***
+
+EXAMPLE CERTIFICATION BODY (DEMO)
+Recycled Content Certificate
+
+Certificate ID:   DEMO-RC-0002
+Issued to:        Sample Garments Pvt Ltd
+Issue date:       2026-01-05
+Expiry date:      2027-01-04
+
+Scope: Recycled cotton fibre supplied to Sample Garments Pvt Ltd.
+Recycled cotton content of certified material: 100 percent
+Reference batch: TX-2001

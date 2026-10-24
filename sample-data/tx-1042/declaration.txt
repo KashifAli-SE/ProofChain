@@ -1,0 +1,12 @@
+*** DEMO DATA - FICTIONAL DOCUMENT ***
+
+SUPPLIER DECLARATION
+Supplier: Example Textile Ltd.
+Product:  Cotton crew-neck T-shirt
+Batch:    TX-1042
+Production date: 2026-03-15
+
+We declare that this batch is made from 100 percent recycled cotton and was
+produced using low-carbon manufacturing.
+
+Material used: recycled cotton fibre    5,000 kg
