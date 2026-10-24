@@ -1,0 +1,36 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Bootstrap the Next.js project and core infrastructure: package.json with all dependencies pinned, TypeScript/Tailwind/vitest config, src/lib/env.ts, src/lib/status.ts, src/lib/api/respond.ts, src/lib/supabase/server.ts, src/lib/audit/log.ts, and src/lib/hash/sha256.ts. This is the foundation all other FEATs depend on.",
+  "status": "completed",
+  "steps": [
+    "Create package.json in c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain with name 'proofchain-ai', scripts (dev, build, start, test='vitest run', lint), and ALL dependencies pinned to exact versions: next@14.2.29, react@18.3.1, react-dom@18.3.1, typescript@5.5.4, tailwindcss@3.4.17, @tailwindcss/forms@0.5.10, autoprefixer@10.4.21, postcss@8.5.3, zod@3.25.67, @supabase/supabase-js@2.50.0, @google/genai@1.3.0, unpdf@0.11.1, qrcode@1.5.4, ethers@6.14.3, dotenv@16.5.0. devDependencies: vitest@3.2.4, @vitest/ui@3.2.4, vite@6.3.5, @types/node@22.15.29, @types/react@18.3.23, @types/react-dom@18.3.7, @types/qrcode@1.5.5, eslint@8.57.1, eslint-config-next@14.2.29.",
+    "Create tsconfig.json with compilerOptions: target ES2022, lib [dom, dom.iterable, esnext], allowJs true, skipLibCheck true, strict true, noEmit true, esModuleInterop true, module esnext, moduleResolution bundler, resolveJsonModule true, isolatedModules true, jsx preserve. Paths: '@/*' -> ['./src/*']. Include: ['next-env.d.ts', '**/*.ts', '**/*.tsx']. Exclude: ['node_modules', 'tests'].",
+    "Create vitest.config.ts at repo root: import { defineConfig } from 'vitest/config'; import path from 'path'; export default defineConfig({ test: { environment: 'node', globals: true }, resolve: { alias: { '@': path.resolve(__dirname, './src') } } });",
+    "Create next.config.ts with a minimal NextConfig export. Set experimental.serverComponentsExternalPackages to include 'unpdf' and '@google/genai'.",
+    "Create tailwind.config.ts with content: ['./src/**/*.{ts,tsx}'], theme extend empty, plugins: [@tailwindcss/forms].",
+    "Create postcss.config.mjs: export default { plugins: { tailwindcss: {}, autoprefixer: {} } };",
+    "Create src/app/globals.css with @tailwind base/components/utilities directives.",
+    "Create src/app/layout.tsx: root layout importing globals.css, html+body with font-sans, children prop.",
+    "Create src/lib/env.ts exactly as in docs/IMPLEMENTATION_PLAN.md §4 skeleton — zod schema parsing process.env, export const env = schema.parse(process.env). Mark top of file with 'This file is server-only' comment.",
+    "Create src/lib/status.ts exactly as in docs/IMPLEMENTATION_PLAN.md §4 skeleton: STATUSES const array, Status type, statusToChain(s) returning STATUSES.indexOf(s), RECORDABLE array.",
+    "Create src/lib/api/respond.ts: export function ok<T>(data: T, status = 200): Response returning JSON {success:true, data}; export function fail(code: string, message: string, status = 400): Response returning JSON {success:false, error:{code,message}}. Use NextResponse from next/server.",
+    "Create src/lib/supabase/server.ts: imports createClient from @supabase/supabase-js; imports env from src/lib/env.ts; exports supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } }). Add comment: 'Server-only. Never import from client components.'",
+    "Create src/lib/audit/log.ts: export async function appendAudit(batchId: string | null, event: string, payload: object = {}): Promise<void> that inserts a row into audit_log via the supabase client. On error: console.error (never throw — audit must not break the main path).",
+    "Create src/lib/hash/sha256.ts: import { createHash } from 'node:crypto'; export function sha256Hex(buffer: Buffer): string returning createHash('sha256').update(buffer).digest('hex').",
+    "Run npm install from the workspace root to install all dependencies.",
+    "Run npm run build to verify the scaffold compiles without TypeScript errors."
+  ],
+  "acceptance_criteria": [
+    "npm run build exits with code 0 and zero TypeScript errors",
+    "npx vitest run exits with code 0 (no test files exist yet, so 0 tests run is acceptable)",
+    "src/lib/env.ts, src/lib/status.ts, src/lib/api/respond.ts, src/lib/supabase/server.ts, src/lib/audit/log.ts, src/lib/hash/sha256.ts all exist and compile",
+    "STATUSES array order matches Solidity enum order: DRAFT(0), ANALYZING(1), NEEDS_EVIDENCE(2), IN_REVIEW(3), VERIFIED(4), REJECTED(5), RECHECK_REQUIRED(6)"
+  ],
+  "verification": [
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && npm run build",
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && npx vitest run"
+  ],
+  "blocked_reason": null,
+  "findings": "1) unpdf@0.11.1 does not exist on npm — used 0.11.0 instead (nearest patch). 2) next.config.ts is NOT supported in Next.js 14 — converted to next.config.mjs. 3) tsconfig.json must explicitly exclude 'test', 'lib', 'out', 'cache-forge', 'script', 'contracts' directories; otherwise the Foundry artefacts cause TypeScript to hang. The FEAT-001 build added this to the exclude array. 4) vitest.config.ts must set passWithNoTests: true, otherwise vitest exits with code 1 when no test files exist. 5) npm install required --legacy-peer-deps flag due to peer dependency conflicts between eslint@8.x and newer packages. 6) Next.js 14 mutates tsconfig.json on first build (adds incremental, .next/types path, next plugin); this is expected behaviour."
+}
