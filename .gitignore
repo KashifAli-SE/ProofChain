@@ -9,11 +9,10 @@ node_modules/
 .env.*.local
 
 # ── Foundry ───────────────────────────────────────────────────────────────────
-out/                  # compiled artifacts
-cache-forge/          # forge build cache
-broadcast/            # deployment receipts & run logs (keep per-chain dirs if you want history)
-# Uncomment the line below to also ignore broadcast artefacts:
-# broadcast/
+out/
+cache-forge/
+broadcast/
+foundry.lock
 
 # ── Legacy Hardhat (kept in case any branch still has them) ───────────────────
 artifacts/
