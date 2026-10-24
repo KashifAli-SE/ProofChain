@@ -1,0 +1,34 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Batch management, evidence upload, and the batch-facing UI pages. Creates all batch/evidence API routes, the PDF extractor, and the dashboard + batch detail UI with StatusBadge, DemoBanner, EvidenceTable components. Depends on FEAT-001 (env, supabase, respond, sha256).",
+  "status": "completed",
+  "steps": [
+    "Create src/app/api/batches/route.ts with POST (create batch: validate body with zod — productName, supplierName, category, batchCode, productionDate, claims array, isDemo bool; insert into products then batches; return BATCH_CODE_TAKEN on unique violation; append audit entry 'batch_created') and GET (list all batches ordered by created_at desc, join latest run status).",
+    "Create src/app/api/batches/[id]/route.ts with GET: load batch row + evidence_documents + latest verification_run + latest review_decision + latest blockchain_records row; return all as nested object; return BATCH_NOT_FOUND if missing.",
+    "Create src/lib/pdf/extract.ts: async function extractText(buffer: Buffer, mimeType: string): Promise<{ text: string; pages: number; hasText: boolean }>. For text/plain: decode buffer as utf-8, pages=1, hasText=text.trim().length>0. For application/pdf: use unpdf's extractText(); if it throws or yields empty string set hasText=false.",
+    "Create src/app/api/batches/[id]/evidence/route.ts with POST multipart: (1) read file from FormData; (2) check mime type is application/pdf or text/plain, else fail EVIDENCE_INVALID; (3) check size <= MAX_UPLOAD_MB*1024*1024, else fail EVIDENCE_INVALID; (4) compute sha256Hex of buffer; (5) upload to Supabase storage bucket 'evidence' at path '{batchId}/{sha256}'; (6) insert evidence_documents row (batch_id, filename, mime_type, size_bytes, storage_path, sha256_hash, extraction_status='PENDING'); (7) if batch was VERIFIED or REJECTED set batch status RECHECK_REQUIRED; (8) appendAudit(batchId, 'evidence_uploaded', {filename, sha256}); (9) never return a public URL.",
+    "Create src/app/api/batches/[id]/activity/route.ts with POST: parse body as ActivityData zod schema (from src/lib/agents/schemas.ts — create a stub schema here if schemas.ts doesn't exist yet, FEAT-003 will add the full one); update batches.activity_data column; appendAudit.",
+    "Create src/components/StatusBadge.tsx: a <span> with Tailwind colour classes per status. Colours: DRAFT=gray, ANALYZING=blue/animate-pulse, NEEDS_EVIDENCE=yellow, IN_REVIEW=indigo, VERIFIED=green, REJECTED=red, RECHECK_REQUIRED=orange.",
+    "Create src/components/DemoBanner.tsx: a full-width orange banner reading 'DEMO DATA — This batch uses fictional sample data and does not represent a real supplier or product.' Only rendered when isDemo=true.",
+    "Create src/components/EvidenceTable.tsx: table listing evidence documents — columns: filename, SHA-256 (first 12 chars + '...'), mime type, size, extraction status badge. No download link (never expose file URL).",
+    "Create src/app/page.tsx: server component that fetches /api/batches (or queries Supabase directly server-side); renders batch table with columns: batch code, product name, supplier, status (StatusBadge), created date; 'New batch' button linking to /batches/new; empty state when no batches; error state.",
+    "Create src/app/batches/new/page.tsx: client component with a form — fields: Product name (text), Supplier name (text), Category (text, default 'textile'), Batch code (text), Production date (date), Demo batch (checkbox, default checked), Claims section (checkboxes for recycled_content / low_carbon_manufacturing / certificate_provided; recycled_content shows a number input for value 0-100 percent). On submit: POST /api/batches; on success redirect to /batches/[id].",
+    "Create src/app/batches/[id]/page.tsx: server component fetching batch detail. Shows: DemoBanner (if is_demo), batch metadata, StatusBadge, EvidenceTable, activity data form (textarea for JSON, POST /api/batches/:id/activity), 'Run analysis' button (stub — full impl in FEAT-004), QrCard placeholder (stub — full impl in FEAT-005). All loading/empty/error states per NFR-11.",
+    "Run npm run build to verify no TypeScript errors."
+  ],
+  "acceptance_criteria": [
+    "npm run build exits 0",
+    "POST /api/batches returns 200 with batch id on valid input",
+    "POST /api/batches returns BATCH_CODE_TAKEN on duplicate batch_code",
+    "POST /api/batches/:id/evidence rejects files over MAX_UPLOAD_MB with EVIDENCE_INVALID",
+    "POST /api/batches/:id/evidence rejects non-PDF/non-text mime types with EVIDENCE_INVALID",
+    "Dashboard page / renders batch table with StatusBadge components",
+    "New batch page /batches/new has all required form fields"
+  ],
+  "verification": [
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": "1) unpdf's extractText returns string[] by default; used { mergePages: true } option to get a single string. 2) Supabase JS client typed joined rows as arrays even for one-to-one FKs (products[]); interface types updated to match. 3) env.ts was executed at module-load time causing build failure in 'Collecting page data' phase; fixed by making both env (Proxy with lazy parse) and supabase client (Proxy with lazy createClient) defer their first evaluation to request time. 4) supabase/server.ts updated with a lazy Proxy wrapper — existing call-sites are unchanged. 5) All new route handlers and server-component pages marked with export const dynamic = 'force-dynamic'. 6) ESLint in this project only supports the bare 'eslint-disable-next-line' directive without rule names for unknown @typescript-eslint rules."
+}
