@@ -5,6 +5,7 @@ import { StatusBadge } from '@/components/StatusBadge';
 import { DemoBanner } from '@/components/DemoBanner';
 import { EvidenceTable, type EvidenceDocument } from '@/components/EvidenceTable';
 import { ActivityForm } from './ActivityForm';
+import { AnalysisPanel } from './AnalysisPanel';
 
 export const dynamic = 'force-dynamic';
 
@@ -145,19 +146,8 @@ export default async function BatchDetailPage({ params }: { params: { id: string
           <ActivityForm batchId={batch.id} initialData={batch.activity_data} />
         </section>
 
-        {/* Run analysis — stub (FEAT-004) */}
-        <section className="mb-8 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-5">
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-400">
-            Run analysis
-          </h2>
-          <p className="text-sm text-gray-400">Analysis engine coming in FEAT-004.</p>
-          <button
-            disabled
-            className="mt-3 rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed"
-          >
-            Run analysis
-          </button>
-        </section>
+        {/* Run analysis */}
+        <AnalysisPanel batchId={batch.id} />
 
         {/* QR card — stub (FEAT-005) */}
         <section className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-5">
