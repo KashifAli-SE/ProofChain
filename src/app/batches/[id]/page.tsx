@@ -6,6 +6,7 @@ import { DemoBanner } from '@/components/DemoBanner';
 import { EvidenceTable, type EvidenceDocument } from '@/components/EvidenceTable';
 import { ActivityForm } from './ActivityForm';
 import { AnalysisPanel } from './AnalysisPanel';
+import { QrCard } from '@/components/QrCard';
 
 export const dynamic = 'force-dynamic';
 
@@ -149,12 +150,11 @@ export default async function BatchDetailPage({ params }: { params: { id: string
         {/* Run analysis */}
         <AnalysisPanel batchId={batch.id} />
 
-        {/* QR card — stub (FEAT-005) */}
-        <section className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-5">
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-400">
-            QR card
+        <section className="rounded-lg border border-gray-200 bg-white p-5">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Public passport QR
           </h2>
-          <p className="text-sm text-gray-400">QR card generation coming in FEAT-005.</p>
+          <QrCard batchCode={batch.batch_code} />
         </section>
       </main>
     </div>
