@@ -11,11 +11,12 @@ const schema = z.object({
   EVIDENCE_BUCKET: z.string().default('evidence'),
   GEMINI_API_KEY: z.string().min(10),
   GEMINI_MODEL: z.string().min(3),
+  GROQ_API_KEY: z.string().min(10).optional(),
   SEPOLIA_RPC_URL: z.string().url(),
   CHAIN_ID: z.coerce.number().default(11155111),
   EXPLORER_BASE_URL: z.string().url().default('https://sepolia.etherscan.io'),
-  RECORDER_PRIVATE_KEY: z.string().regex(/^(0x)?[0-9a-fA-F]{64}$/),
-  REGISTRY_ADDRESS: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
+  RECORDER_PRIVATE_KEY: z.string().min(64).transform((v) => v.trim()),
+  REGISTRY_ADDRESS: z.string().min(40).transform((v) => v.trim()),
 });
 
 export type Env = z.infer<typeof schema>;

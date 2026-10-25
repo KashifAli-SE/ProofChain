@@ -3,6 +3,7 @@ import { supabase } from '@/lib/supabase/server';
 import { ok, fail } from '@/lib/api/respond';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export async function GET(
   _req: NextRequest,
@@ -10,6 +11,7 @@ export async function GET(
 ) {
   const { id } = params;
 
+  // Step 1: Load batch with product, evidence, and runs
   const { data: batch, error } = await supabase
     .from('batches')
     .select(
@@ -59,16 +61,8 @@ export async function GET(
         reviewer_note,
         override_confirmed,
         record_hash,
-        decided_at
-      ),
-      blockchain_records (
-        id,
-        chain_id,
-        contract_address,
-        transaction_hash,
-        record_hash,
-        block_number,
-        created_at
+        decided_at,
+        verification_run_id
       )
     `
     )
@@ -79,23 +73,28 @@ export async function GET(
     return fail('BATCH_NOT_FOUND', `No batch found with id '${id}'`, 404);
   }
 
-  // Pick the latest verification run
+  // Step 2: Pick latest verification run
   const runs = Array.isArray(batch.verification_runs) ? batch.verification_runs : [];
   const latestRun = runs.sort(
     (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   )[0] ?? null;
 
-  // Pick the latest review decision
+  // Step 3: Pick latest review decision
   const decisions = Array.isArray(batch.review_decisions) ? batch.review_decisions : [];
   const latestDecision = decisions.sort(
     (a, b) => new Date(b.decided_at).getTime() - new Date(a.decided_at).getTime()
   )[0] ?? null;
 
-  // Pick the latest blockchain record
-  const blockchainRecords = Array.isArray(batch.blockchain_records) ? batch.blockchain_records : [];
-  const latestBlockchainRecord = blockchainRecords.sort(
-    (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-  )[0] ?? null;
+  // Step 4: Load blockchain record separately via review_decision_id
+  let latestBlockchainRecord = null;
+  if (latestDecision) {
+    const { data: bcData } = await supabase
+      .from('blockchain_records')
+      .select('id, chain_id, contract_address, transaction_hash, record_hash, block_number, created_at')
+      .eq('review_decision_id', latestDecision.id)
+      .maybeSingle();
+    latestBlockchainRecord = bcData ?? null;
+  }
 
   return ok({
     id: batch.id,

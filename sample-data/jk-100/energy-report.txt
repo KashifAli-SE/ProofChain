@@ -1,0 +1,43 @@
+DEMO DATA
+
+FACILITY ENERGY CONSUMPTION REPORT
+
+Report No:    ENR-2026-0202
+Date:         2026-10-25
+Prepared by:  Sindh Textile Ltd — Sustainability Dept.
+
+Facility:     Plot 42, SITE Industrial Area, Karachi, Pakistan
+Batch ID:     JK-100
+Product:      Recycled Leather Jackets
+Reporting period: 2026-07-01 to 2026-10-20
+
+-------------------------------------------------------
+ENERGY CONSUMPTION SUMMARY
+-------------------------------------------------------
+Source              Quantity    Unit    Measurement
+-------------------------------------------------------
+Grid electricity    7,200       kWh     measured (smart meter)
+Diesel (generator)  180         L       measured (flow meter)
+Natural gas         95          m3      estimated (billing data)
+-------------------------------------------------------
+
+Scope boundary: Facility energy use for the stated production period only.
+Excludes raw materials, transport, use phase and end-of-life.
+
+Notes:
+- Electricity sourced from Karachi Electric grid (DEMO)
+- Leather cutting and stitching machinery accounts for ~80% of electricity use
+- Diesel used for backup generator during load-shedding periods
+- Natural gas used for leather finishing and pressing equipment
+
+Emission factors applied (ILLUSTRATIVE — for demo only):
+- Electricity: 0.45 kgCO2e/kWh (placeholder)
+- Diesel: 2.68 kgCO2e/L (placeholder)
+- Natural gas: 2.0 kgCO2e/m3 (placeholder)
+
+Estimated total: ~3,913 kgCO2e (illustrative, unverified factors)
+
+Authorised by: CEO, Sindh Textile Ltd (DEMO)
+Date: 2026-10-25
+
+This document is DEMO DATA generated for testing purposes only.

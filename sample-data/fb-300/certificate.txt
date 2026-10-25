@@ -1,0 +1,26 @@
+DEMO DATA
+
+RECYCLED CONTENT CERTIFICATE
+
+Certificate ID: DEMO-RC-0300
+Issued by: EXAMPLE CERTIFICATION BODY (DEMO)
+Issue date: 2025-03-01
+Expiry date: 2025-09-30
+
+Supplier: Karachi Fabrics Co. (DEMO)
+Facility: Unit 12, Export Zone, Karachi, Pakistan
+Batch ID: FB-300
+
+This certificate confirms that batch FB-300 contains 60% recycled
+polyester fibre sourced from post-consumer PET bottles.
+
+Recycled content claim: recycled_content
+Value: 60 percent
+
+Certified under: Global Recycled Standard (GRS) — DEMO version
+Audited by: EXAMPLE AUDIT FIRM (DEMO)
+Audit date: 2025-02-20
+
+NOTE: This certificate expires 2025-09-30.
+
+This document is DEMO DATA generated for testing purposes only.

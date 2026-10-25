@@ -1,0 +1,31 @@
+{
+  "period_start": "2026-07-01",
+  "period_end": "2026-09-01",
+  "production_units": 6000,
+  "lines": [
+    {
+      "id": "elec-001",
+      "kind": "electricity",
+      "quantity": 11200,
+      "unit": "kWh",
+      "quality": "measured",
+      "source_doc_id": null
+    },
+    {
+      "id": "diesel-001",
+      "kind": "diesel",
+      "quantity": 150,
+      "unit": "L",
+      "quality": "measured",
+      "source_doc_id": null
+    },
+    {
+      "id": "gas-001",
+      "kind": "natural_gas",
+      "quantity": 200,
+      "unit": "m3",
+      "quality": "measured",
+      "source_doc_id": null
+    }
+  ]
+}

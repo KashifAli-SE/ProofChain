@@ -1,0 +1,45 @@
+DEMO DATA
+
+FACILITY ENERGY CONSUMPTION REPORT
+
+Report No:    ENR-2026-0500
+Date:         2026-10-01
+Prepared by:  EcoWeave Textiles Ltd — Sustainability Dept.
+
+Supplier:     EcoWeave Textiles Ltd
+Facility:     Plot 88, Green Industrial Zone, Lahore, Pakistan
+Batch ID:     EC-500
+Product:      Eco Blend Cotton Shirts
+Reporting period: 2026-07-01 to 2026-09-01
+
+-------------------------------------------------------
+ENERGY CONSUMPTION SUMMARY
+-------------------------------------------------------
+Source              Quantity    Unit    Measurement
+-------------------------------------------------------
+Grid electricity    11,200      kWh     measured (certified smart meter)
+Diesel (generator)    150       L       measured (calibrated flow meter)
+Natural gas           200       m3      measured (gas meter billing data)
+-------------------------------------------------------
+
+Scope boundary: Facility energy use for the stated production period only.
+Excludes raw materials, transport, use phase and end-of-life.
+
+Notes:
+- Electricity sourced from LESCO grid, Lahore (DEMO)
+- Solar panels supply approx 15% of electricity (not separately metered)
+- Diesel used only for emergency generator (2 incidents during reporting period)
+- Natural gas used for steam finishing and garment pressing
+
+Emission factors applied (ILLUSTRATIVE — for demo only):
+- Electricity: 0.45 kgCO2e/kWh (placeholder)
+- Diesel: 2.68 kgCO2e/L (placeholder)
+- Natural gas: 2.0 kgCO2e/m3 (placeholder)
+
+Estimated total: ~5,842 kgCO2e (illustrative, unverified factors)
+Estimated per unit (6,000 shirts): ~0.97 kgCO2e per shirt
+
+Authorised by: Head of Sustainability, EcoWeave Textiles Ltd (DEMO)
+Signature verified: 2026-10-01
+
+This document is DEMO DATA generated for testing purposes only.

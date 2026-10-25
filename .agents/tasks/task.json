@@ -1,0 +1,7 @@
+{
+  "task_id": "task-proofchain-ai-build",
+  "task_description": "Build the full ProofChain AI application: Next.js App Router frontend + API, Supabase integration, four AI/deterministic agents (Document Investigator, Cross-Checker, Climate Analyst, Auditor), Sepolia anchoring via existing Foundry-deployed ProofChainRegistry contract, public passport, and on-chain hash verification.",
+  "status": "pending",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003", "FEAT-004", "FEAT-005", "FEAT-006"],
+  "blocked_reason": null
+}

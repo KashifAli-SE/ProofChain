@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-005",
+  "type": "feat",
+  "description": "Public passport, QR code, and on-chain hash verification. Creates the passport API and page, QrCard component, chain read utility, and the verify API + page. Depends on FEAT-001, FEAT-002, FEAT-004.",
+  "status": "pending",
+  "steps": [
+    "Create src/lib/chain/read.ts: export async function readOnChainRecord(batchCode: string, recordHash: string): Promise<{ found: boolean; status?: number; recorder?: string; timestamp?: number }>. Use ethers JsonRpcProvider with env.SEPOLIA_RPC_URL, Contract with REGISTRY_ABI, call isRecorded(batchIdHash(batchCode), recordHash). If found, call getLatest(batchIdHash(batchCode)) and return the struct fields. Handle network errors by throwing with code CHAIN_UNAVAILABLE.",
+    "Create src/app/api/passport/[batchCode]/route.ts with GET: (1) load batch by batch_code including latest review_decision and latest blockchain_records row; (2) if batch not found: fail('BATCH_NOT_FOUND', 404); (3) return ONLY sanitised fields: batch_code, product_name, supplier_name, declared_claims (claim types only, no internal ids), status, is_demo, decision (VERIFIED/REJECTED/NEEDS_EVIDENCE or null), decided_at (or null), record_hash (or null), tx_hash (or null), block_number (or null), explorer_url (or null). NEVER return: filenames, storage_paths, reviewer_note, extracted_data, findings, audit_report, internal UUIDs, API keys, or any evidence content.",
+    "Create src/app/passport/[batchCode]/page.tsx: server component. (1) fetch /api/passport/:batchCode; (2) show DemoBanner if is_demo=true; (3) show product name, supplier name, declared claims list, status badge, decision date; (4) if blockchain record exists: show record hash (truncated), block number, and a link to env.NEXT_PUBLIC_APP_URL + etherscan link; (5) show this EXACT caveat text verbatim in a prominent box: 'A blockchain record proves this decision was not altered after it was recorded. It does not prove the underlying claims are true.'; (6) responsive layout working at 360px and 1280px (use Tailwind responsive classes); (7) empty state when batch not found; error state.",
+    "Create src/components/QrCard.tsx: client component. Accepts batchCode prop. Generates QR code image using the qrcode library (qrcode.toDataURL) pointing to env.NEXT_PUBLIC_APP_URL + '/passport/' + batchCode. Renders as an <img> with alt text and a 'Scan to view public passport' label. Also shows the passport URL as a clickable link. Update src/app/batches/[id]/page.tsx to render <QrCard batchCode={batch.batch_code} /> (replacing the stub from FEAT-002) when a blockchain record exists.",
+    "Create src/app/api/records/[recordHash]/verify/route.ts with GET: (1) look up review_decision by record_hash in DB; (2) if not found: return { result: 'NOT_ON_CHAIN', explanation: 'No decision with this record hash found in the database.' }; (3) rebuild VerificationRecord from DB using buildRecord(); (4) recompute hash = recordHash(rebuilt_record); (5) if recomputed != stored record_hash: return { result: 'MISMATCH', explanation: 'The stored record no longer matches the hash. Data may have been altered.' }; (6) call readOnChainRecord(batch_code, record_hash); (7) if not on chain: return { result: 'NOT_ON_CHAIN' }; (8) return { result: 'MATCH', record_hash, block_number, explorer_url }.",
+    "Create src/app/verify/page.tsx: client component. Input field for batch code (or record hash). On submit: call /api/records/:recordHash/verify. Show result: MATCH (green, shows record hash + explorer link), MISMATCH (red, shows warning about data alteration), NOT_ON_CHAIN (yellow, explains the hash is not on-chain). All loading/error states per NFR-11.",
+    "Run npm run build to verify no TypeScript errors."
+  ],
+  "acceptance_criteria": [
+    "npm run build exits 0",
+    "GET /api/passport/:batchCode returns batch_code, status, is_demo but never returns reviewer_note, storage_path, or extracted_data",
+    "Passport page shows the exact caveat text: 'A blockchain record proves this decision was not altered after it was recorded. It does not prove the underlying claims are true.'",
+    "Passport page shows DemoBanner when is_demo=true",
+    "QrCard generates a QR code pointing to the correct passport URL",
+    "GET /api/records/:recordHash/verify returns MISMATCH when DB record data is altered",
+    "Passport page is usable at 360px width (no horizontal overflow)"
+  ],
+  "verification": [
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

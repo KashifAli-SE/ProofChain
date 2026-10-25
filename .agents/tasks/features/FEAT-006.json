@@ -1,0 +1,36 @@
+{
+  "id": "FEAT-006",
+  "type": "chore",
+  "description": "Hardening, polish, and security audit. Ensures every security and quality requirement is met: no process.env outside env.ts, no secrets in client bundles, responsive layout at 360px, all loading/error states present, all emissions figures show units+sources+assumptions, vitest and build both clean. Depends on all prior FEATs.",
+  "status": "pending",
+  "steps": [
+    "Search the entire src/ directory for any direct process.env access (grep pattern 'process\\.env\\.') in files other than src/lib/env.ts. Fix any occurrences by importing from src/lib/env.ts instead.",
+    "Search src/app/ for any import of src/lib/env.ts from a file that is a client component ('use client' directive at top). env.ts must only be imported from server components, route handlers, and server-side lib files. Fix any violations by moving the env read to a server action or route handler and passing the non-secret value as a prop.",
+    "Verify RECORDER_PRIVATE_KEY and DEPLOYER_PRIVATE_KEY are never referenced outside src/lib/env.ts, src/lib/chain/anchor.ts, and src/lib/chain/read.ts. These must never appear in any client bundle.",
+    "Search for console.log, console.error, console.warn calls across src/ that could expose secret values (API keys, private keys, full error stacks). Replace with safe logging that logs error codes/types only.",
+    "Walk through every UI page at 360px width: src/app/page.tsx (dashboard), src/app/batches/new/page.tsx, src/app/batches/[id]/page.tsx, src/app/batches/[id]/review/page.tsx, src/app/passport/[batchCode]/page.tsx, src/app/verify/page.tsx. Fix any Tailwind classes that would cause horizontal overflow at 360px (e.g. use overflow-x-auto on tables, use responsive text sizes, ensure form inputs have w-full).",
+    "Verify every async page has all four states — loading (skeleton or spinner), empty (helpful message), error (user-friendly error with retry where applicable), success (content) — per NFR-11. Check: dashboard (empty batch list state), batch detail (no evidence yet state), report view (no run yet state), passport (batch not found state).",
+    "Verify CarbonPanel shows units on every emissions figure, shows factor_source for each line, shows the boundary statement, and shows the ILLUSTRATIVE_FACTORS warning banner when applicable — per NFR-12. If any of these are missing, add them.",
+    "Run npx vitest run — confirm all 5 test files pass with 0 failures. Fix any regressions.",
+    "Run npm run build — confirm 0 TypeScript errors and 0 build errors. Fix any issues.",
+    "Verify the Foundry tests still pass and have not been accidentally modified: run forge test from the repo root and confirm 20 tests pass. Do NOT modify any files in contracts/, test/, or script/."
+  ],
+  "acceptance_criteria": [
+    "npx vitest run passes all tests (cross-checker, climate-analyst, canonical, status-policy, auditor-postprocess) with 0 failures",
+    "npm run build exits 0 with no TypeScript errors",
+    "forge test passes 20/20 tests (pre-existing Foundry tests unchanged)",
+    "No direct process.env access in any file outside src/lib/env.ts",
+    "No import of env.ts from client components ('use client' files)",
+    "RECORDER_PRIVATE_KEY never appears in any client-side bundle or client component",
+    "All pages render correctly at 360px width without horizontal overflow",
+    "CarbonPanel displays units, factor source, and assumptions for every emissions line",
+    "DemoBanner appears on all demo batch pages (is_demo=true)"
+  ],
+  "verification": [
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && npx vitest run",
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && npm run build",
+    "cd c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain && forge test"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

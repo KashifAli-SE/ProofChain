@@ -1,0 +1,26 @@
+DEMO DATA
+
+RECYCLED CONTENT CERTIFICATE
+
+Certificate ID: DEMO-RC-0101
+Issued by: EXAMPLE CERTIFICATION BODY (DEMO)
+Issue date: 2026-01-10
+Expiry date: 2026-12-31
+
+Supplier: Sindh Textile Ltd
+Facility: Plot 42, SITE Industrial Area, Karachi, Pakistan
+Batch ID: TS-101
+
+This certificate confirms that the above batch consists of 100% recycled
+cotton fibre sourced exclusively from post-consumer textile waste collected
+within a certified take-back programme.
+
+Recycled content claim: recycled_content
+Value: 100 percent
+
+Certified under: Global Recycled Standard (GRS) — DEMO version
+Audited by: EXAMPLE AUDIT FIRM (DEMO)
+Audit date: 2025-12-15
+
+This document is DEMO DATA generated for testing purposes only.
+It does not represent a real certification.

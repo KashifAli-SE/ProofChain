@@ -1,0 +1,37 @@
+DEMO DATA
+
+PURCHASE INVOICE
+
+Invoice No:   INV-2026-0300
+Invoice Date: 2026-03-15
+Due Date:     2026-04-15
+
+Supplier (Seller):
+  PET Recyclers Ltd (DEMO)
+  Industrial Area, Faisalabad, Pakistan
+
+Buyer:
+  Karachi Fabrics Co. (DEMO)
+  Unit 12, Export Zone, Karachi, Pakistan
+
+Batch Reference: FB-300
+
+-------------------------------------------------------
+Item Description                   Qty      Unit   Unit Price   Total
+-------------------------------------------------------
+Recycled polyester fibre (rPET)  3,000    kg     $1.95/kg    $5,850.00
+(post-consumer PET bottles)
+
+Virgin polyester fibre            2,000    kg     $1.60/kg    $3,200.00
+-------------------------------------------------------
+Subtotal:                                                    $9,050.00
+Shipping & handling:                                           $150.00
+Total:                                                       $9,200.00
+-------------------------------------------------------
+
+Note: Recycled content = 3,000 kg of 5,000 kg total = 60%
+Certificate reference: DEMO-RC-0300
+
+Payment terms: Net 30
+
+This document is DEMO DATA generated for testing purposes only.

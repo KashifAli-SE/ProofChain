@@ -1,0 +1,40 @@
+DEMO DATA
+
+PURCHASE INVOICE
+
+Invoice No:   INV-2026-0101
+Invoice Date: 2026-01-20
+Due Date:     2026-02-20
+
+Supplier (Seller):
+  GreenFibre Recycling Co. (DEMO)
+  Warehouse 7, Export Processing Zone
+  Karachi, Pakistan
+
+Buyer:
+  Sindh Textile Ltd
+  Plot 42, SITE Industrial Area
+  Karachi, Pakistan
+
+Batch Reference: TS-101
+
+-------------------------------------------------------
+Item Description              Qty      Unit   Unit Price   Total
+-------------------------------------------------------
+Recycled cotton fibre         5,000    kg     $1.85/kg     $9,250.00
+(post-consumer, GRS certified)
+
+Recycled polyester thread      200    kg     $2.10/kg       $420.00
+-------------------------------------------------------
+Subtotal:                                               $9,670.00
+Shipping & handling:                                      $180.00
+Total:                                                  $9,850.00
+-------------------------------------------------------
+
+Recycled content: 100% of total fibre weight (5,000 kg recycled cotton)
+Certificate reference: DEMO-RC-0101
+
+Payment terms: Net 30
+Bank: DEMO BANK — Account: 0000-0000-0000
+
+This document is DEMO DATA generated for testing purposes only.

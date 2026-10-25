@@ -1,0 +1,36 @@
+DEMO DATA
+
+MATERIAL COMPOSITION REPORT
+
+Report No:    MCR-2026-0101
+Date:         2026-01-25
+Laboratory:   EXAMPLE TESTING LAB (DEMO)
+
+Supplier:     Sindh Textile Ltd
+Batch ID:     TS-101
+Product:      Recycled Cotton T-Shirt
+Production date: 2026-10-20
+
+-------------------------------------------------------
+FIBRE COMPOSITION ANALYSIS
+-------------------------------------------------------
+Sample weight: 250g
+Test method:   DEMO-ISO-1833 (chemical dissolution)
+
+Component                    Weight (g)   Percentage
+-------------------------------------------------------
+Recycled cotton (post-consumer)  250.0      100.0%
+Virgin cotton                      0.0        0.0%
+Synthetic fibres                   0.0        0.0%
+-------------------------------------------------------
+Total                            250.0      100.0%
+
+CONCLUSION:
+The tested sample from batch TS-101 contains 100% recycled cotton fibre.
+No virgin cotton or synthetic fibres were detected.
+Result is consistent with the declared claim of recycled_content: 100 percent.
+
+Signed: EXAMPLE TESTING LAB (DEMO)
+Accreditation: DEMO-ACCRED-001
+
+This document is DEMO DATA generated for testing purposes only.

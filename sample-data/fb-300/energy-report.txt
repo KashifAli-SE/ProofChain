@@ -1,0 +1,40 @@
+DEMO DATA
+
+FACILITY ENERGY CONSUMPTION REPORT
+
+Report No:    ENR-2026-0300
+Date:         2026-10-25
+Prepared by:  Karachi Fabrics Co. (DEMO) — Sustainability Dept.
+
+Facility:     Unit 12, Export Zone, Karachi, Pakistan
+Batch ID:     FB-300
+Product:      Recycled Polyester Fabric Rolls
+Reporting period: 2026-01-01 to 2026-04-01
+
+-------------------------------------------------------
+ENERGY CONSUMPTION SUMMARY
+-------------------------------------------------------
+Source              Quantity    Unit    Measurement
+-------------------------------------------------------
+Grid electricity    18,500      kWh     measured (smart meter)
+Diesel (generator)  950         L       measured (flow meter)
+Natural gas         0           m3      not applicable
+-------------------------------------------------------
+
+Scope boundary: Facility energy use for the stated production period only.
+Excludes raw materials, transport, use phase and end-of-life.
+
+Notes:
+- High electricity use due to extrusion and spinning machinery
+- Significant diesel use due to frequent grid outages in this period
+
+Emission factors applied (ILLUSTRATIVE — for demo only):
+- Electricity: 0.45 kgCO2e/kWh (placeholder)
+- Diesel: 2.68 kgCO2e/L (placeholder)
+
+Estimated total: ~10,891 kgCO2e (illustrative, unverified factors)
+
+Authorised by: Operations Manager, Karachi Fabrics Co. (DEMO)
+Date: 2026-10-25
+
+This document is DEMO DATA generated for testing purposes only.

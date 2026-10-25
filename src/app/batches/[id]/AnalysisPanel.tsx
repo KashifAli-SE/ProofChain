@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { FindingCard } from '@/components/FindingCard';
 import { CarbonPanel } from '@/components/CarbonPanel';
 import type { Finding, CarbonResult, AuditReport } from '@/lib/agents/schemas';
@@ -19,6 +20,7 @@ interface RunReport {
 
 interface AnalysisPanelProps {
   batchId: string;
+  batchStatus?: string;
 }
 
 type GroupLabel = 'Verified by check' | 'Inconsistent' | 'Missing' | 'Unverified';
@@ -48,7 +50,7 @@ function groupFindings(
   return groups;
 }
 
-export function AnalysisPanel({ batchId }: AnalysisPanelProps) {
+export function AnalysisPanel({ batchId, batchStatus }: AnalysisPanelProps) {
   const [isRunning, setIsRunning] = useState(false);
   const [report, setReport] = useState<RunReport | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -132,43 +134,37 @@ export function AnalysisPanel({ batchId }: AnalysisPanelProps) {
         <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
           Run analysis
         </h2>
-        <button
-          onClick={() => void handleRunAnalysis()}
-          disabled={isRunning}
-          className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-            isRunning
-              ? 'bg-indigo-300 text-white cursor-not-allowed'
-              : 'bg-indigo-600 text-white hover:bg-indigo-700'
-          }`}
-        >
-          {isRunning ? (
-            <span className="flex items-center gap-2">
-              <svg
-                className="h-4 w-4 animate-spin"
-                fill="none"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                />
-              </svg>
-              Analysing…
-            </span>
-          ) : (
-            'Run analysis'
+        <div className="flex items-center gap-2">
+          {batchStatus && ['IN_REVIEW','VERIFIED','REJECTED','NEEDS_EVIDENCE','RECHECK_REQUIRED'].includes(batchStatus) && (
+            <Link
+              href={`/batches/${batchId}/review`}
+              className="rounded-lg border border-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-600 hover:bg-indigo-50"
+            >
+              Review →
+            </Link>
           )}
-        </button>
+          <button
+            onClick={() => void handleRunAnalysis()}
+            disabled={isRunning}
+            className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+              isRunning
+                ? 'bg-indigo-300 text-white cursor-not-allowed'
+                : 'bg-indigo-600 text-white hover:bg-indigo-700'
+            }`}
+          >
+            {isRunning ? (
+              <span className="flex items-center gap-2">
+                <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Analysing…
+              </span>
+            ) : (
+              'Run analysis'
+            )}
+          </button>
+        </div>
       </div>
 
       {error && (
@@ -187,21 +183,29 @@ export function AnalysisPanel({ batchId }: AnalysisPanelProps) {
 
       {report?.status === 'COMPLETED' && (
         <div className="space-y-6">
-          {/* Recommendation */}
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-gray-500">AI recommendation:</span>
-            <span
-              className={`rounded-full px-3 py-1 text-sm font-semibold ${
-                report.ai_recommendation === 'APPROVE'
-                  ? 'bg-green-100 text-green-800'
-                  : report.ai_recommendation === 'REJECT'
-                  ? 'bg-red-100 text-red-800'
-                  : 'bg-yellow-100 text-yellow-800'
-              }`}
+          {/* Recommendation + Review CTA */}
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-indigo-100 bg-indigo-50 p-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-sm font-medium text-gray-600">AI recommendation:</span>
+              <span
+                className={`rounded-full px-3 py-1 text-sm font-semibold ${
+                  report.ai_recommendation === 'APPROVE'
+                    ? 'bg-green-100 text-green-800'
+                    : report.ai_recommendation === 'REJECT'
+                    ? 'bg-red-100 text-red-800'
+                    : 'bg-yellow-100 text-yellow-800'
+                }`}
+              >
+                {report.ai_recommendation ?? '—'}
+              </span>
+              <span className="text-xs text-gray-400">(ceiling: {report.recommendation_ceiling})</span>
+            </div>
+            <Link
+              href={`/batches/${batchId}/review`}
+              className="rounded-lg bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-700"
             >
-              {report.ai_recommendation ?? '—'}
-            </span>
-            <span className="text-xs text-gray-400">(ceiling: {report.recommendation_ceiling})</span>
+              Submit review →
+            </Link>
           </div>
 
           {/* Audit summary */}

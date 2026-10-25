@@ -90,7 +90,7 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
   const [loading, setLoading] = useState(true);
   const [pageError, setPageError] = useState<string | null>(null);
 
-  const [authed, setAuthed] = useState(false);
+  const [authed, setAuthed] = useState<boolean | null>(null); // null = checking
   const [passcode, setPasscode] = useState('');
   const [loggingIn, setLoggingIn] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
@@ -130,6 +130,13 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
     void fetchBatch();
   }, [fetchBatch]);
 
+  // Check if already authenticated via cookie on mount
+  useEffect(() => {
+    fetch('/api/auth/reviewer/check', { credentials: 'same-origin' })
+      .then((r) => setAuthed(r.ok))
+      .catch(() => setAuthed(false));
+  }, []);
+
   const highFlag =
     batch?.latestRun?.findings?.some((f) => f.severity === 'high' && f.result === 'FLAG') ?? false;
   const highFlagFindings =
@@ -153,10 +160,11 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
         credentials: 'same-origin',
         body: JSON.stringify({ passcode }),
       });
+      const json = await res.json().catch(() => null);
       if (res.ok) {
         setAuthed(true);
+        setPasscode('');
       } else {
-        const json = await res.json().catch(() => null);
         setLoginError(json?.error?.message ?? 'Invalid passcode');
       }
     } catch {
@@ -266,7 +274,16 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
             <StatusBadge status={batch.status} className="text-sm" />
           </div>
 
-          {!authed ? (
+          {authed === null ? (
+            // Still checking cookie
+            <div className="flex items-center gap-2 py-6 text-gray-500">
+              <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              <span className="text-sm">Checking authentication…</span>
+            </div>
+          ) : !authed ? (
             <section className="rounded-lg border border-gray-200 bg-white p-5">
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">
                 Reviewer login

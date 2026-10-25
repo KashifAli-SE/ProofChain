@@ -1,0 +1,30 @@
+{
+  "project_type": "Next.js 14 App Router monolith (TypeScript strict + Tailwind) + Supabase Postgres + Gemini LLM + Sepolia smart contract. Modular monolith — no microservices.",
+  "language": "TypeScript (strict mode, no any)",
+  "build_system": "npm. Scripts: 'build' = next build, 'test' = vitest run, 'dev' = next dev. No Hardhat — project uses Foundry for contracts (forge test, forge script). tsconfig must have path alias '@/*' -> 'src/*'.",
+  "test_framework": "vitest for app logic (tests/ directory). Foundry (forge test) for Solidity — 20 tests already passing in test/ProofChainRegistry.t.sol. DO NOT run forge test as part of vitest.",
+  "build_command": "npm run build",
+  "test_command": "npx vitest run",
+  "verification_instructions": "1) npm run build must produce zero TypeScript errors. 2) npx vitest run must pass all vitest tests. 3) Manual: forge test from repo root confirms 20 Foundry tests still pass.",
+  "snapshot_or_generated_files": "out/ contains Foundry compilation artifacts (already committed). Do not regenerate or delete. cache-forge/ is the Foundry cache (committed). npm build produces .next/ which is gitignored.",
+  "environment_constraints": "Workspace root: c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain. All src/ files go inside this root. Never write outside it. The project has NO package.json yet — the first FEAT must create the Next.js project scaffold. .env.local is git-ignored; use .env.example as the reference for variable names. SUPABASE_SERVICE_ROLE_KEY is server-only — never import env.ts from client components.",
+  "contribution_requirements": "Files listed as pre-existing must NOT be overwritten: contracts/ProofChainRegistry.sol, test/ProofChainRegistry.t.sol, script/Deploy.s.sol, foundry.toml, supabase/schema.sql, config/emission-factors.json, config/evidence-requirements.json, sample-data/**, docs/**, .env.example, .gitignore. Task 7.1 (Hardhat) is SKIPPED — Foundry is already configured.",
+  "key_patterns": "API responses: { success: true, data: ... } or { success: false, error: { code: 'UPPER_SNAKE', message: '...' } } — implemented via src/lib/api/respond.ts ok()/fail() helpers. All env vars via src/lib/env.ts (zod-parsed, throws on missing). Status strings defined once in src/lib/status.ts, mirroring Solidity enum order. Canonical JSON: recursively sort keys, no whitespace — src/lib/hash/canonical.ts. Agents are plain TS functions in src/lib/agents/. Route handlers stay thin: parse → call lib → respond. LLM calls only in Agent 1 and Agent 4. All other logic is pure/deterministic.",
+  "relevant_files": [
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/.kiro/specs/proofchain-ai/design.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/.kiro/specs/proofchain-ai/requirements.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/.kiro/specs/proofchain-ai/tasks.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/docs/AGENT_SPECS.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/docs/IMPLEMENTATION_PLAN.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/.kiro/steering/structure.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/.kiro/steering/tech.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/contracts/ProofChainRegistry.sol",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/supabase/schema.sql",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/config/emission-factors.json",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/config/evidence-requirements.json",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/sample-data/README.md",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/.env.example",
+    "c:\\Users\\kashi\\Downloads\\ProofChain\\ProofChain/docs/IMPLEMENTATION_PLAN.md"
+  ],
+  "directory_structure": "contracts/ — Solidity (Foundry project, do not touch). test/ — Foundry tests (.t.sol). script/ — Foundry deploy script (.s.sol). lib/ — forge-std submodule. out/ — Foundry compilation output. cache-forge/ — Foundry cache. config/ — JSON config files. sample-data/ — demo evidence files for TX-1042 and TX-2001. supabase/ — schema.sql. docs/ — specs and guides. .kiro/ — Kiro specs, steering, hooks. src/ — to be created: Next.js app. tests/ — to be created: vitest tests."
+}

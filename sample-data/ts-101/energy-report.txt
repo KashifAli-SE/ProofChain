@@ -1,0 +1,41 @@
+DEMO DATA
+
+FACILITY ENERGY CONSUMPTION REPORT
+
+Report No:    ENR-2026-0101
+Date:         2026-10-25
+Prepared by:  Sindh Textile Ltd — Sustainability Dept.
+
+Facility:     Plot 42, SITE Industrial Area, Karachi, Pakistan
+Batch ID:     TS-101
+Reporting period: 2026-07-01 to 2026-10-20
+
+-------------------------------------------------------
+ENERGY CONSUMPTION SUMMARY
+-------------------------------------------------------
+Source              Quantity    Unit    Measurement
+-------------------------------------------------------
+Grid electricity    9,800       kWh     measured (smart meter)
+Diesel (generator)  210         L       measured (flow meter)
+Natural gas         120         m3      estimated (billing data)
+-------------------------------------------------------
+
+Scope boundary: Facility energy use for the stated production period only.
+Excludes raw materials, transport, use phase and end-of-life.
+
+Notes:
+- Electricity sourced from Karachi Electric grid (DEMO)
+- Diesel used for backup generator during load-shedding periods
+- Natural gas used for steam pressing equipment
+
+Emission factors applied (ILLUSTRATIVE — for demo only):
+- Electricity: 0.45 kgCO2e/kWh (placeholder)
+- Diesel: 2.68 kgCO2e/L (placeholder)
+- Natural gas: 2.0 kgCO2e/m3 (placeholder)
+
+Estimated total: ~5,046 kgCO2e (illustrative, unverified factors)
+
+Authorised by: CEO, Sindh Textile Ltd (DEMO)
+Date: 2026-10-25
+
+This document is DEMO DATA generated for testing purposes only.

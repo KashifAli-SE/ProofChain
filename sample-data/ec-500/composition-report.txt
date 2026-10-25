@@ -1,0 +1,42 @@
+DEMO DATA
+
+MATERIAL COMPOSITION REPORT
+
+Report No:    MCR-2026-0500
+Date:         2026-08-15
+Laboratory:   EXAMPLE TESTING LAB (DEMO)
+
+Supplier:     EcoWeave Textiles Ltd
+Batch ID:     EC-500
+Product:      Eco Blend Cotton Shirts
+Production date: 2026-09-01
+
+-------------------------------------------------------
+FIBRE COMPOSITION ANALYSIS
+-------------------------------------------------------
+Sample weight: 400g
+Test method:   DEMO-ISO-1833 (chemical dissolution)
+
+Component                          Weight (g)   Percentage
+-------------------------------------------------------
+Recycled cotton (post-consumer)      300.0        75.0%
+Virgin cotton                        100.0        25.0%
+Synthetic fibres                       0.0         0.0%
+-------------------------------------------------------
+Total                                400.0       100.0%
+
+CONCLUSION:
+The tested sample from batch EC-500 supplied by EcoWeave Textiles Ltd contains
+exactly 75% recycled cotton fibre. This is fully consistent with the declared
+claim of recycled_content: 75 percent and the purchase invoice showing
+3,750 kg recycled cotton of 5,000 kg total fibre.
+
+No discrepancies found between declared claim, invoice quantities, and
+laboratory test results.
+
+Batch ID EC-500 referenced across all documents.
+
+Signed: EXAMPLE TESTING LAB (DEMO)
+Accreditation: DEMO-ACCRED-005
+
+This document is DEMO DATA generated for testing purposes only.

@@ -1,0 +1,28 @@
+DEMO DATA
+
+RECYCLED CONTENT CERTIFICATE
+
+Certificate ID: DEMO-RC-0202
+Issued by: EXAMPLE CERTIFICATION BODY (DEMO)
+Issue date: 2026-02-01
+Expiry date: 2026-12-31
+
+Supplier: Sindh Textile Ltd
+Facility: Plot 42, SITE Industrial Area, Karachi, Pakistan
+Batch ID: JK-100
+
+This certificate confirms that the above batch of Recycled Leather Jackets
+is manufactured using 100% recycled leather sourced from post-industrial
+leather offcuts and post-consumer leather garments collected via certified
+take-back and industrial waste recovery programmes.
+
+Recycled content claim: recycled_content
+Value: 100 percent
+Material: Recycled leather (post-industrial + post-consumer)
+
+Certified under: Global Recycled Standard (GRS) — DEMO version
+Audited by: EXAMPLE AUDIT FIRM (DEMO)
+Audit date: 2026-01-20
+
+This document is DEMO DATA generated for testing purposes only.
+It does not represent a real certification.

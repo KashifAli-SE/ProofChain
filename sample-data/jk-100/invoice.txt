@@ -1,0 +1,40 @@
+DEMO DATA
+
+PURCHASE INVOICE
+
+Invoice No:   INV-2026-0202
+Invoice Date: 2026-02-10
+Due Date:     2026-03-10
+
+Supplier (Seller):
+  EcoLeather Recycling Co. (DEMO)
+  Industrial Zone, Lahore, Pakistan
+
+Buyer:
+  Sindh Textile Ltd
+  Plot 42, SITE Industrial Area
+  Karachi, Pakistan
+
+Batch Reference: JK-100
+
+-------------------------------------------------------
+Item Description                  Qty      Unit   Unit Price   Total
+-------------------------------------------------------
+Recycled leather hide               800    kg     $4.20/kg   $3,360.00
+(post-industrial offcuts, GRS cert)
+
+Recycled leather trim pieces        150    kg     $3.80/kg     $570.00
+(post-consumer, GRS certified)
+-------------------------------------------------------
+Subtotal:                                                    $3,930.00
+Shipping & handling:                                           $220.00
+Total:                                                       $4,150.00
+-------------------------------------------------------
+
+Recycled content: 100% of total leather weight (950 kg recycled leather)
+Certificate reference: DEMO-RC-0202
+
+Payment terms: Net 30
+Bank: DEMO BANK — Account: 0000-0000-0001
+
+This document is DEMO DATA generated for testing purposes only.

@@ -1,0 +1,38 @@
+DEMO DATA
+
+MATERIAL COMPOSITION REPORT
+
+Report No:    MCR-2026-0202
+Date:         2026-02-15
+Laboratory:   EXAMPLE TESTING LAB (DEMO)
+
+Supplier:     Sindh Textile Ltd
+Batch ID:     JK-100
+Product:      Recycled Leather Jackets
+Production date: 2026-10-20
+
+-------------------------------------------------------
+MATERIAL COMPOSITION ANALYSIS
+-------------------------------------------------------
+Sample weight: 500g
+Test method:   DEMO-ISO-17072 (leather identification)
+
+Component                          Weight (g)   Percentage
+-------------------------------------------------------
+Recycled leather (post-industrial)   350.0        70.0%
+Recycled leather (post-consumer)     150.0        30.0%
+Virgin leather                         0.0         0.0%
+Synthetic materials                    0.0         0.0%
+-------------------------------------------------------
+Total recycled leather               500.0       100.0%
+
+CONCLUSION:
+The tested sample from batch JK-100 contains 100% recycled leather.
+70% sourced from post-industrial offcuts, 30% from post-consumer garments.
+No virgin leather or synthetic substitutes were detected.
+Result is consistent with the declared claim of recycled_content: 100 percent.
+
+Signed: EXAMPLE TESTING LAB (DEMO)
+Accreditation: DEMO-ACCRED-002
+
+This document is DEMO DATA generated for testing purposes only.

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase/server';
 import { StatusBadge } from '@/components/StatusBadge';
 import { DemoBanner } from '@/components/DemoBanner';
-import { EvidenceTable, type EvidenceDocument } from '@/components/EvidenceTable';
 import { ActivityForm } from './ActivityForm';
 import { AnalysisPanel } from './AnalysisPanel';
 import { QrCard } from '@/components/QrCard';
-
+import { EvidenceSection } from './EvidenceSection';
+import type { EvidenceDocument } from '@/components/EvidenceTable';
 export const dynamic = 'force-dynamic';
 
 interface BatchDetail {
@@ -91,7 +91,15 @@ export default async function BatchDetailPage({ params }: { params: { id: string
             <h1 className="text-2xl font-bold text-gray-900 font-mono">{batch.batch_code}</h1>
             <p className="mt-1 text-gray-500">{product?.product_name ?? '—'}</p>
           </div>
-          <StatusBadge status={batch.status} className="text-sm" />
+          <div className="flex items-center gap-3">
+            <StatusBadge status={batch.status} className="text-sm" />
+            <Link
+              href={`/batches/${batch.id}/review`}
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700"
+            >
+              Review →
+            </Link>
+          </div>
         </div>
 
         {/* Batch metadata */}
@@ -136,7 +144,7 @@ export default async function BatchDetailPage({ params }: { params: { id: string
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
             Evidence documents
           </h2>
-          <EvidenceTable documents={docs} />
+          <EvidenceSection batchId={batch.id} batchStatus={batch.status} initialDocs={docs} />
         </section>
 
         {/* Activity data */}
@@ -148,7 +156,7 @@ export default async function BatchDetailPage({ params }: { params: { id: string
         </section>
 
         {/* Run analysis */}
-        <AnalysisPanel batchId={batch.id} />
+        <AnalysisPanel batchId={batch.id} batchStatus={batch.status} />
 
         <section className="rounded-lg border border-gray-200 bg-white p-5">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">

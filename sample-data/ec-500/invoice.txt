@@ -1,0 +1,43 @@
+DEMO DATA
+
+PURCHASE INVOICE
+
+Invoice No:   INV-2026-0500
+Invoice Date: 2026-08-10
+Due Date:     2026-09-10
+
+Supplier (Seller):
+  GreenFibre Recycling Co. (DEMO)
+  Warehouse 12, Recycling Industrial Zone
+  Faisalabad, Pakistan
+
+Buyer:
+  EcoWeave Textiles Ltd
+  Plot 88, Green Industrial Zone
+  Lahore, Pakistan
+
+Batch Reference: EC-500
+
+-------------------------------------------------------
+Item Description                   Qty      Unit   Unit Price    Total
+-------------------------------------------------------
+Recycled cotton fibre (rCotton)  3,750    kg     $2.20/kg    $8,250.00
+(post-consumer, GRS certified,
+ 75% of total fibre weight)
+
+Virgin cotton fibre               1,250    kg     $1.80/kg    $2,250.00
+-------------------------------------------------------
+Subtotal:                                                    $10,500.00
+Shipping & handling:                                            $200.00
+Total:                                                       $10,700.00
+-------------------------------------------------------
+
+Recycled content: 3,750 kg recycled of 5,000 kg total = 75 percent
+Certificate reference: DEMO-RC-0500
+Batch ID: EC-500
+Supplier: EcoWeave Textiles Ltd
+
+Payment terms: Net 30
+Bank: DEMO BANK — Account: 0000-0000-0500
+
+This document is DEMO DATA generated for testing purposes only.

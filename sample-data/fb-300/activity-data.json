@@ -1,0 +1,23 @@
+{
+  "period_start": "2026-01-01",
+  "period_end": "2026-04-01",
+  "production_units": 8000,
+  "lines": [
+    {
+      "id": "elec-001",
+      "kind": "electricity",
+      "quantity": 18500,
+      "unit": "kWh",
+      "quality": "measured",
+      "source_doc_id": null
+    },
+    {
+      "id": "diesel-001",
+      "kind": "diesel",
+      "quantity": 950,
+      "unit": "L",
+      "quality": "measured",
+      "source_doc_id": null
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+DEMO DATA
+
+RECYCLED CONTENT CERTIFICATE
+
+Certificate ID: DEMO-RC-0500
+Issued by: EXAMPLE CERTIFICATION BODY (DEMO)
+Issue date: 2026-08-01
+Expiry date: 2027-07-31
+
+Supplier: EcoWeave Textiles Ltd
+Facility: Plot 88, Green Industrial Zone, Lahore, Pakistan
+Batch ID: EC-500
+
+This certificate confirms that batch EC-500 manufactured by EcoWeave Textiles Ltd
+contains 75% recycled cotton fibre sourced from post-consumer textile waste and
+certified under the Global Recycled Standard (GRS) DEMO version.
+
+Recycled content claim: recycled_content
+Value: 75 percent
+Material: Recycled cotton (post-consumer)
+
+Certificate also confirms the supplier holds a current sustainability certification
+covering low-carbon manufacturing practices at the stated facility.
+
+Certified under: Global Recycled Standard (GRS) — DEMO version
+Audited by: EXAMPLE AUDIT FIRM (DEMO)
+Audit date: 2026-07-20
+
+This document is DEMO DATA generated for testing purposes only.
+It does not represent a real certification.

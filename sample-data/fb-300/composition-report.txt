@@ -1,0 +1,39 @@
+DEMO DATA
+
+MATERIAL COMPOSITION REPORT
+
+Report No:    MCR-2026-0300
+Date:         2026-03-20
+Laboratory:   EXAMPLE TESTING LAB (DEMO)
+
+Supplier:     Karachi Fabrics Co. (DEMO)
+Batch ID:     FB-300
+Product:      Recycled Polyester Fabric Rolls
+Production date: 2026-04-01
+
+-------------------------------------------------------
+FIBRE COMPOSITION ANALYSIS
+-------------------------------------------------------
+Sample weight: 300g
+Test method:   DEMO-ISO-1833 (chemical dissolution)
+
+Component                          Weight (g)   Percentage
+-------------------------------------------------------
+Recycled polyester (rPET)           180.0        60.0%
+Virgin polyester                    120.0        40.0%
+Other fibres                          0.0         0.0%
+-------------------------------------------------------
+Total                               300.0       100.0%
+
+CONCLUSION:
+The tested sample from batch FB-300 contains 60% recycled polyester.
+This is consistent with the invoice showing 3,000 kg rPET out of 5,000 kg total.
+
+NOTE: The declared claim states 80% recycled content.
+The tested composition shows only 60% recycled content.
+This is a discrepancy of 20 percentage points.
+
+Signed: EXAMPLE TESTING LAB (DEMO)
+Accreditation: DEMO-ACCRED-003
+
+This document is DEMO DATA generated for testing purposes only.

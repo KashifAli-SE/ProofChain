@@ -39,11 +39,17 @@ export async function POST(
     return fail('EVIDENCE_INVALID', 'A file field named "file" is required');
   }
 
-  // Validate MIME type
-  if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+  // Validate MIME type — also accept octet-stream for .txt files uploaded by some browsers
+  const filename = file.name.toLowerCase();
+  const effectiveMime =
+    file.type === 'application/octet-stream' && filename.endsWith('.txt')
+      ? 'text/plain'
+      : file.type;
+
+  if (!ALLOWED_MIME_TYPES.includes(effectiveMime)) {
     return fail(
       'EVIDENCE_INVALID',
-      `File type '${file.type}' is not allowed. Only PDF and plain text are accepted.`
+      `File type '${file.type}' is not allowed. Only PDF and plain text (.txt) are accepted.`
     );
   }
 
@@ -66,7 +72,7 @@ export async function POST(
   const { error: uploadError } = await supabase.storage
     .from(env.EVIDENCE_BUCKET)
     .upload(storagePath, buffer, {
-      contentType: file.type,
+      contentType: effectiveMime,
       upsert: false,
     });
 
@@ -80,7 +86,7 @@ export async function POST(
     .insert({
       batch_id: batchId,
       filename: file.name,
-      mime_type: file.type,
+      mime_type: effectiveMime,
       size_bytes: file.size,
       storage_path: storagePath,
       sha256_hash: sha256,
